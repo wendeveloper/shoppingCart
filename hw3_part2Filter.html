@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <script src="js/angular16.js"></script>
+    <script src="js/hw3_part2Controller.js"></script>
+    <script src="js/hw3_part2Filter.js"></script>
+</head>
+<body>
+    <div ng-controller="HelloController">
+        <p>Input:       <input type="text" ng-model='greeting'></p>
+        <p>Delimiter:   <input type="text" ng-model='delim'></p>
+        <p>{{greeting | tokenize}} (Default)</p>
+        <!-- pass in delim parameter on the input string tokenize:delim -->
+        <p>{{greeting | tokenize:delim}} (With option)</p>
+    </div>
+</body>
+</html>

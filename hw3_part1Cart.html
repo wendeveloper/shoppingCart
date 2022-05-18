@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang='en' ng-app="myApp">
+
+    <head>
+        <title>Book Shopping Cart</title>
+
+        <script src="js/angular16.js"></script>
+        <script src="js/hw3_part1Controller.js"></script>
+        <link rel="stylesheet" href="css/cart.css">
+    </head>
+
+    <body ng-controller="CartController" ng-init="updateTotal()">
+
+        <table>
+            <caption><b>Wendy's Books</b></caption>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Qty</th>
+                    <th>UnitPrice</th>
+                    <th>$UnitPrice</th>
+                    <th>Line Total</th>
+                    <th>Total {{updateTotal() | currency}} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in books">
+                    <!-- use ng-model tag to bind to the model itself that's defined in the controller-->
+                    <td><input ng-model="book.title" class='rounded' size="25"></td>
+                    <td><input ng-model="book.qty" size="2" class='rounded'style="text-align:right;" size="6"></td>
+                    <td><input ng-model="book.price" style="text-align:right;" class='rounded' size="8"></td>
+                    <td style="text-align:right;">{{book.price | currency}}</td>
+                    <td style="text-align:right;">{{book.price * book.qty | currency}}</td>
+                    <td><button ng-click="removeBook($index)">Remove</button></td>
+                </tr>
+                <tr>
+                    <th colspan="3" align="center"><button ng-click="addBook($index)" >New</button></th>
+                    <th colspan="3" align="center"><button ng-click="saveBooks($index)">Save</button></th>
+                </tr>
+            </tbody>
+        </table>
+
+     </body>
+</html>
+
+
